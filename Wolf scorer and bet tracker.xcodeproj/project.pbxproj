@@ -11,6 +11,8 @@
 		34612040291DE76300194209 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3461203F291DE76300194209 /* ContentView.swift */; };
 		34612042291DE76400194209 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34612041291DE76400194209 /* Assets.xcassets */; };
 		34612045291DE76400194209 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34612044291DE76400194209 /* Preview Assets.xcassets */; };
+		3461204C291E969600194209 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3461204B291E969600194209 /* SwiftUIView.swift */; };
+		3461204E291E96C900194209 /* playerScoreCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3461204D291E96C900194209 /* playerScoreCard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +21,8 @@
 		3461203F291DE76300194209 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		34612041291DE76400194209 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		34612044291DE76400194209 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		3461204B291E969600194209 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
+		3461204D291E96C900194209 /* playerScoreCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = playerScoreCard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +39,8 @@
 		34612031291DE76300194209 = {
 			isa = PBXGroup;
 			children = (
+				3461204D291E96C900194209 /* playerScoreCard.swift */,
+				3461204B291E969600194209 /* SwiftUIView.swift */,
 				3461203C291DE76300194209 /* Wolf scorer and bet tracker */,
 				3461203B291DE76300194209 /* Products */,
 			);
@@ -139,6 +145,8 @@
 			files = (
 				34612040291DE76300194209 /* ContentView.swift in Sources */,
 				3461203E291DE76300194209 /* Wolf_scorer_and_bet_trackerApp.swift in Sources */,
+				3461204C291E969600194209 /* SwiftUIView.swift in Sources */,
+				3461204E291E96C900194209 /* playerScoreCard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
