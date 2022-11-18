@@ -32,6 +32,7 @@ struct ContentView: View {
     @State private var players = Players()
     @State private var playerArray = [String]()
     @State private var isShowingDetailView = false
+    @State private var handicapArray = [String]()
 
     var body: some View{
         NavigationView {
@@ -81,7 +82,7 @@ struct ContentView: View {
                     
                 }
                 VStack{
-                    NavigationLink(destination: playerScoreCard(players: players, playerArray: playerArray),  isActive: $isShowingDetailView) { EmptyView()}
+                    NavigationLink(destination: playerScoreCard(players: players, playerArray: playerArray, handicapArray: handicapArray),  isActive: $isShowingDetailView) { EmptyView()}
                     Button("Add Players") {
                         isShowingDetailView = true
                         playerArray.append(players.Player1)
@@ -89,7 +90,11 @@ struct ContentView: View {
                         playerArray.append(players.Player3)
                         playerArray.append(players.Player4)
                         playerArray.append(players.Player5)
-                        
+                        handicapArray.append(players.Player1H)
+                        handicapArray.append(players.Player2H)
+                        handicapArray.append(players.Player3H)
+                        handicapArray.append(players.Player4H)
+                        handicapArray.append(players.Player5H)
                     }
                 }
             }

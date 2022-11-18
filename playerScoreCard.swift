@@ -9,18 +9,25 @@ import SwiftUI
 struct playerScoreCard: View {
     let players : Players
     let playerArray : [String]
+    let handicapArray :  [String]
     var body: some View {
         VStack{
             VStack{
                 CustomTextWithSub(player: players.Player1, handi: players.Player1H)
             }
-            Text(players.Player1)
-            Text(players.Player2)
-            Text(players.Player3)
-            Text(players.Player4)
-            Text(players.Player5)
-            Text("\(playerArray[0])")
-            
+//            Text(players.Player1)
+//            Text(players.Player2)
+//            Text(players.Player3)
+//            Text(players.Player4)
+//            Text(players.Player5)
+//            Text("\(playerArray[0])")
+            VStack{
+                LazyVGrid(columns: columns, spacing: 20) {
+                    ForEach(0..<5) { index in
+                        CustomTextWithSub(player: playerArray[index], handi: handicapArray[index])
+                    }
+                }
+            }
             
             
             
@@ -42,7 +49,7 @@ struct CustomTextWithSub: View {
             Text(player)
                 .bold()
             Text(handi)
-                .offset(x: 10, y: 12)
+                .offset(x: -5, y: 10)
                 .font(.system(size: 12))
                 .fontWeight(.heavy)
                 
@@ -56,6 +63,11 @@ struct CustomTextWithSub: View {
 
 struct playerScoreCard_Previews: PreviewProvider {
     static var previews: some View {
-        playerScoreCard(players: Players(), playerArray: ["Harry"])
+        playerScoreCard(players: Players(), playerArray: ["Harry"], handicapArray: ["1"])
     }
 }
+
+let columns = [
+    
+        GridItem(.adaptive(minimum: 250)),
+    ]
