@@ -108,6 +108,7 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
+
 struct CustomTextFieldPlayer: View {
     let placeholder : String
     let variable : Binding<String>

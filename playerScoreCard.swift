@@ -21,6 +21,11 @@ struct playerScoreCard: View {
     @State private var plyr3totalfront = 0
     @State private var plyr4totalfront = 0
     @State private var plyr5totalfront = 0
+    @State private var nplyr1totalfront = 0
+    @State private var nplyr2totalfront = 0
+    @State private var nplyr3totalfront = 0
+    @State private var nplyr4totalfront = 0
+    @State private var nplyr5totalfront = 0
     var body: some View {
         VStack{
             VStack{
@@ -29,12 +34,17 @@ struct playerScoreCard: View {
                     HStack{
                         ForEach(0..<9){ index in
                             TextField(frontholes[index], text: $plyr1scorefirst[index] )
-                                .frame(width: 20, height: 20)
+                                .frame(width: 15, height: 15)
                         }
                     }
-                    Text("\(plyr1totalfront)")
-                        .font(.system(size: 25))
-                        .bold()
+                    HStack{
+                        Text("\(grossscoretotal(totalscore: plyr1totalfront, playerArray: plyr1scorefirst))")
+                            .font(.system(size: 25))
+                            .bold()
+                        Text("\(netscore(totalscore: plyr1totalfront, handi: players.Player1H, net:nplyr1totalfront, playerArray:plyr1scorefirst))")
+                            .font(.system(size: 20))
+                            .bold()
+                    }
                 }
                 
 
@@ -85,7 +95,22 @@ struct playerScoreCard: View {
             }
         }
     }
-    
+    func grossscoretotal(totalscore: Int, playerArray: Array<Any>) -> String {
+        var totalscore = totalscore
+        for number in 0..<9 {
+            totalscore += Int(playerArray[number] as! String) ?? 0
+        }
+        return String(totalscore)
+    }
+    func netscore(totalscore: Int, handi: String, net: Int, playerArray: Array<Any>) -> String{
+        var net = net
+        var totalscore = totalscore
+        for number in 0..<9 {
+            totalscore += Int(playerArray[number] as! String) ?? 0
+        }
+        net = (Int(totalscore) - (Int(handi) ?? 0))
+        return String(net)
+    }
 }
 struct CustomTextWithSub: View {
     let player : String
