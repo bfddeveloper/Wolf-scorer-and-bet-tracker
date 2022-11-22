@@ -108,33 +108,6 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
-//struct playerHandicapEntry: View {
-//    @State private var players = Players()
-//    var body: some View{
-//        VStack{
-//            HStack{
-//                Text("Players")
-//                Text("Handicap numbers")
-//            }
-//            HStack{
-//                Text("1")
-//
-//                CustomTextFieldPlayer(placeholder: "Player 1", variable: $players.Player1)
-//
-//                CustomTextFieldHandi(placeholder: "#1", variable: $players.Player1H)
-//
-//            }
-//            HStack{
-//                Text("2")
-//                CustomTextFieldPlayer(placeholder: "Player 2", variable: $players.Player2)
-//
-//                CustomTextFieldHandi(placeholder: "#2", variable: $players.Player2H)
-//
-//            }
-//        }
-//    }
-//}
-
 struct CustomTextFieldPlayer: View {
     let placeholder : String
     let variable : Binding<String>
