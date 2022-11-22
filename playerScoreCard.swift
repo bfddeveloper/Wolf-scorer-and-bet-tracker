@@ -17,6 +17,10 @@ struct playerScoreCard: View {
     @State private var plyr4scorefirst = ["", "", "", "", "", "", "", "", ""]
     @State private var plyr5scorefirst = ["", "", "", "", "", "", "", "", ""]
     @State private var plyr1totalfront = 0
+    @State private var plyr2totalfront = 0
+    @State private var plyr3totalfront = 0
+    @State private var plyr4totalfront = 0
+    @State private var plyr5totalfront = 0
     var body: some View {
         VStack{
             VStack{
@@ -48,6 +52,24 @@ struct playerScoreCard: View {
                     HStack{
                         ForEach(0..<9){ index in
                             TextField(frontholes[index], text: $plyr3scorefirst[index] )
+                                .frame(width: 25, height: 25)
+                        }
+                    }
+                }
+                HStack{
+                    CustomTextWithSub(player: players.Player4, handi: players.Player4H)
+                    HStack{
+                        ForEach(0..<9){ index in
+                            TextField(frontholes[index], text: $plyr4scorefirst[index] )
+                                .frame(width: 25, height: 25)
+                        }
+                    }
+                }
+                HStack{
+                    CustomTextWithSub(player: players.Player5, handi: players.Player5H)
+                    HStack{
+                        ForEach(0..<9){ index in
+                            TextField(frontholes[index], text: $plyr5scorefirst[index] )
                                 .frame(width: 25, height: 25)
                         }
                     }
@@ -97,19 +119,3 @@ let rows = [
     GridItem(.fixed(25))
     
 ]
-
-struct player1scoresheet {
-    var hole1 = ""
-    var hole2 = ""
-    var hole3 = ""
-    var hole4 = ""
-    var hole5 = ""
-    var hole6 = ""
-    var hole7 = ""
-    var hole8 = ""
-    var hole9 = ""
-
-
-}
-
-
