@@ -29,7 +29,6 @@ struct playerScoreCard: View {
     @State private var netScoreArray = []
     @State private var myMax = 0
     @State private var winnerscore = 1000000
-    @State private var indexW = 0
     @State private var winner = ""
     @State private var winnermessage = ""
     @State private var wMOpaccity = 0.0
@@ -132,20 +131,18 @@ struct playerScoreCard: View {
                 netScoreArray.append(nplyr3totalfront)
                 netScoreArray.append(nplyr4totalfront)
                 netScoreArray.append(nplyr5totalfront)
-                winnermessage = winnerCheck(playerScoreArray: netScoreArray, winnerscore: winnerscore, winnerindex: indexW, PlayerArray: playerArray)
+                winnermessage = winnerCheck(playerScoreArray: netScoreArray, winnerscore: winnerscore, PlayerArray: playerArray)
                 wMOpaccity = 1
             }
             Text(winnermessage)
                 .opacity(wMOpaccity)
         }
     }
-    func winnerCheck(playerScoreArray: Array<Any>, winnerscore: Int, winnerindex: Int, PlayerArray: Array<String>) -> String {
+    func winnerCheck(playerScoreArray: Array<Any>, winnerscore: Int, PlayerArray: Array<String>) -> String {
        var winnerscore = 100000
-        var winnerindex = winnerindex
         for number in 0..<5 {
             if winnerscore > playerScoreArray[number] as! Int {
                 winnerscore = playerScoreArray[number] as! Int
-                winnerindex = number
                 winner = PlayerArray[number]
             }
         }
