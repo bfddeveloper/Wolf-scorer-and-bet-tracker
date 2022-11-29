@@ -26,128 +26,144 @@ struct playerScoreCard: View {
     @State private var nplyr3totalfront = 0
     @State private var nplyr4totalfront = 0
     @State private var nplyr5totalfront = 0
-    @State private var netScoreArray = []
+    @State private var netScoreArray = [Int]()
     @State private var myMax = 0
     @State private var winnerscore = 1000000
     @State private var winner = ""
     @State private var winnermessage = ""
     @State private var wMOpaccity = 0.0
     var body: some View {
-        VStack{
-            
+        ZStack{
+            Color.green
+                .ignoresSafeArea()
             VStack{
-                HStack{
-                    CustomTextWithSub(player: players.Player1, handi: players.Player1H)
+                
+                VStack{
                     HStack{
-                        ForEach(0..<9){ index in
-                            TextField(frontholes[index], text: $plyr1scorefirst[index] )
-                                .frame(width: 15, height: 15)
+                        CustomTextWithSub(player: players.Player1, handi: players.Player1H)
+                        HStack{
+                            ForEach(0..<9){ index in
+                                TextField(frontholes[index], text: $plyr1scorefirst[index] )
+                                    .frame(width: 15, height: 15)
+                            }
+                        }
+                        HStack{
+                            Text("\(grossscoretotal(totalscore: plyr1totalfront, playerArray: plyr1scorefirst))")
+                                .font(.system(size: 25))
+                                .bold()
+                            Text("\(netscore(totalscore: plyr1totalfront, handi: players.Player1H, net:nplyr1totalfront, playerArray:plyr1scorefirst))")
+                                .font(.system(size: 20))
+                                .bold()
+                        }
+                    }
+                    
+                    
+                    HStack{
+                        CustomTextWithSub(player: players.Player2, handi: players.Player2H)
+                        HStack{
+                            ForEach(0..<9){ index in
+                                TextField(frontholes[index], text: $plyr2scorefirst[index] )
+                                    .frame(width: 15, height: 15)
+                            }
+                            HStack{
+                                Text("\(grossscoretotal(totalscore: plyr2totalfront, playerArray: plyr2scorefirst))")
+                                    .font(.system(size: 25))
+                                    .bold()
+                                Text("\(netscore(totalscore: plyr2totalfront, handi: players.Player2H, net:nplyr2totalfront, playerArray:plyr2scorefirst))")
+                                    .font(.system(size: 20))
+                                    .bold()
+                            }
                         }
                     }
                     HStack{
-                        Text("\(grossscoretotal(totalscore: plyr1totalfront, playerArray: plyr1scorefirst))")
-                            .font(.system(size: 25))
-                            .bold()
-                        Text("\(netscore(totalscore: plyr1totalfront, handi: players.Player1H, net:nplyr1totalfront, playerArray:plyr1scorefirst))")
-                            .font(.system(size: 20))
-                            .bold()
+                        CustomTextWithSub(player: players.Player3, handi: players.Player3H)
+                        HStack{
+                            ForEach(0..<9){ index in
+                                TextField(frontholes[index], text: $plyr3scorefirst[index] )
+                                    .frame(width: 15, height: 15)
+                            }
+                            HStack{
+                                Text("\(grossscoretotal(totalscore: plyr3totalfront, playerArray: plyr3scorefirst))")
+                                    .font(.system(size: 25))
+                                    .bold()
+                                Text("\(netscore(totalscore: plyr3totalfront, handi: players.Player3H, net:nplyr3totalfront, playerArray:plyr3scorefirst))")
+                                    .font(.system(size: 20))
+                                    .bold()
+                            }
+                        }
                     }
+                    HStack{
+                        CustomTextWithSub(player: players.Player4, handi: players.Player4H)
+                        HStack{
+                            ForEach(0..<9){ index in
+                                TextField(frontholes[index], text: $plyr4scorefirst[index] )
+                                    .frame(width: 15, height: 15)
+                            }
+                            HStack{
+                                Text("\(grossscoretotal(totalscore: plyr4totalfront, playerArray: plyr4scorefirst))")
+                                    .font(.system(size: 25))
+                                    .bold()
+                                Text("\(netscore(totalscore: plyr4totalfront, handi: players.Player4H, net:nplyr4totalfront, playerArray:plyr4scorefirst))")
+                                    .font(.system(size: 20))
+                                    .bold()
+                            }
+                        }
+                    }
+                    HStack{
+                        CustomTextWithSub(player: players.Player5, handi: players.Player5H)
+                        HStack{
+                            ForEach(0..<9){ index in
+                                TextField(frontholes[index], text: $plyr5scorefirst[index] )
+                                    .frame(width: 15, height: 15)
+                            }
+                            HStack{
+                                Text("\(grossscoretotal(totalscore: plyr5totalfront, playerArray: plyr5scorefirst))")
+                                    .font(.system(size: 25))
+                                    .bold()
+                                Text("\(netscore(totalscore: plyr5totalfront, handi: players.Player5H, net:nplyr5totalfront, playerArray:plyr5scorefirst))")
+                                    .font(.system(size: 20))
+                                    .bold()
+                            }
+                        }
+                    }
+                    
                 }
-                
+                Button("Who Won") {
+                    netScoreArray.append(Int(netscore(totalscore: plyr1totalfront, handi: players.Player1H, net:nplyr1totalfront, playerArray:plyr1scorefirst))!)
+                    netScoreArray.append(Int(netscore(totalscore: plyr2totalfront, handi: players.Player2H, net:nplyr2totalfront, playerArray:plyr2scorefirst))!)
+                    netScoreArray.append(Int(netscore(totalscore: plyr3totalfront, handi: players.Player3H, net:nplyr3totalfront, playerArray:plyr3scorefirst))!)
+                    netScoreArray.append(Int(netscore(totalscore: plyr4totalfront, handi: players.Player4H, net:nplyr4totalfront, playerArray:plyr4scorefirst))!)
+                    netScoreArray.append(Int(netscore(totalscore: plyr5totalfront, handi: players.Player5H, net:nplyr5totalfront, playerArray:plyr5scorefirst))!)
+//                    winnermessage = winnerCheck(playerScoreArray: netScoreArray, winnerscore: winnerscore, PlayerArray: playerArray)
+                    wMOpaccity = 1
+                    print(netScoreArray)
 
-                HStack{
-                    CustomTextWithSub(player: players.Player2, handi: players.Player2H)
-                    HStack{
-                        ForEach(0..<9){ index in
-                            TextField(frontholes[index], text: $plyr2scorefirst[index] )
-                                .frame(width: 15, height: 15)
-                        }
-                        HStack{
-                            Text("\(grossscoretotal(totalscore: plyr2totalfront, playerArray: plyr2scorefirst))")
-                                .font(.system(size: 25))
-                                .bold()
-                            Text("\(netscore(totalscore: plyr2totalfront, handi: players.Player2H, net:nplyr2totalfront, playerArray:plyr2scorefirst))")
-                                .font(.system(size: 20))
-                                .bold()
-                        }
-                    }
+                    winnermessage = "the winner had a score of \(netScoreArray.min()!), the player who won "
+                    print(netScoreArray)
                 }
-                HStack{
-                    CustomTextWithSub(player: players.Player3, handi: players.Player3H)
-                    HStack{
-                        ForEach(0..<9){ index in
-                            TextField(frontholes[index], text: $plyr3scorefirst[index] )
-                                .frame(width: 15, height: 15)
-                        }
-                        HStack{
-                            Text("\(grossscoretotal(totalscore: plyr3totalfront, playerArray: plyr3scorefirst))")
-                                .font(.system(size: 25))
-                                .bold()
-                            Text("\(netscore(totalscore: plyr3totalfront, handi: players.Player3H, net:nplyr3totalfront, playerArray:plyr3scorefirst))")
-                                .font(.system(size: 20))
-                                .bold()
-                        }
-                    }
-                }
-                HStack{
-                    CustomTextWithSub(player: players.Player4, handi: players.Player4H)
-                    HStack{
-                        ForEach(0..<9){ index in
-                            TextField(frontholes[index], text: $plyr4scorefirst[index] )
-                                .frame(width: 15, height: 15)
-                        }
-                        HStack{
-                            Text("\(grossscoretotal(totalscore: plyr4totalfront, playerArray: plyr4scorefirst))")
-                                .font(.system(size: 25))
-                                .bold()
-                            Text("\(netscore(totalscore: plyr4totalfront, handi: players.Player4H, net:nplyr4totalfront, playerArray:plyr4scorefirst))")
-                                .font(.system(size: 20))
-                                .bold()
-                        }
-                    }
-                }
-                HStack{
-                    CustomTextWithSub(player: players.Player5, handi: players.Player5H)
-                    HStack{
-                        ForEach(0..<9){ index in
-                            TextField(frontholes[index], text: $plyr5scorefirst[index] )
-                                .frame(width: 15, height: 15)
-                        }
-                        HStack{
-                            Text("\(grossscoretotal(totalscore: plyr5totalfront, playerArray: plyr5scorefirst))")
-                                .font(.system(size: 25))
-                                .bold()
-                            Text("\(netscore(totalscore: plyr5totalfront, handi: players.Player5H, net:nplyr5totalfront, playerArray:plyr5scorefirst))")
-                                .font(.system(size: 20))
-                                .bold()
-                        }
-                    }
-                }
-                
-            }
-            Button("Who Won") {
-                netScoreArray.append(nplyr1totalfront)
-                netScoreArray.append(nplyr2totalfront)
-                netScoreArray.append(nplyr3totalfront)
-                netScoreArray.append(nplyr4totalfront)
-                netScoreArray.append(nplyr5totalfront)
-                winnermessage = winnerCheck(playerScoreArray: netScoreArray, winnerscore: winnerscore, PlayerArray: playerArray)
-                wMOpaccity = 1
-            }
-            Text(winnermessage)
-                .opacity(wMOpaccity)
-        }
-    }
-    func winnerCheck(playerScoreArray: Array<Any>, winnerscore: Int, PlayerArray: Array<String>) -> String {
-       var winnerscore = 100000
-        for number in 0..<5 {
-            if winnerscore > playerScoreArray[number] as! Int {
-                winnerscore = playerScoreArray[number] as! Int
-                winner = PlayerArray[number]
+                Text(winnermessage)
+                    .opacity(wMOpaccity)
             }
         }
-        return "\(winner)"
     }
+//    func winnerCheck(playerScoreArray: Array<Int>, winnerscore: Int, PlayerArray: Array<String>) -> String {
+//        var winnerscore = playerScoreArray.min()
+//        var indexofwinner = playerScoreArray.firstIndex(where: winnerscore)
+//        var winner = PlayerArray[indexofwinner]
+////        var winnerscore = playerScoreArray[0] as! Int
+//
+////        for number in 0..<5 {
+////            if winnerscore >= playerScoreArray[number] as! Int {
+////                winnerscore = playerScoreArray[number] as! Int
+////                winner = PlayerArray[number]
+////            }
+////        }
+//        return "\(winner) is the winner"
+//    }
+    
+//    func scoremessage(total1: Int, total2: Int, total3: Int, total4: Int, total5: Int, ) {
+//
+//    }
     func grossscoretotal(totalscore: Int, playerArray: Array<Any>) -> String {
         var totalscore = totalscore
         for number in 0..<9 {
