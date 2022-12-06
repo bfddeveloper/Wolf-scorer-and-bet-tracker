@@ -31,12 +31,17 @@ struct playerScoreCard: View {
     @State private var winnerscore = 1000000
     @State private var winner = ""
     @State private var winnermessage = ""
+    @State private var playerwinnermessage = ""
     @State private var wMOpaccity = 0.0
+    @State private var indexOfWinner = 0
     var body: some View {
         ZStack{
             Color.green
                 .ignoresSafeArea()
             VStack{
+                Text("Score Card")
+                    .font(Font.custom("Marker Felt", size: 36))
+                    .padding()
                 
                 VStack{
                     HStack{
@@ -134,36 +139,25 @@ struct playerScoreCard: View {
                     netScoreArray.append(Int(netscore(totalscore: plyr3totalfront, handi: players.Player3H, net:nplyr3totalfront, playerArray:plyr3scorefirst))!)
                     netScoreArray.append(Int(netscore(totalscore: plyr4totalfront, handi: players.Player4H, net:nplyr4totalfront, playerArray:plyr4scorefirst))!)
                     netScoreArray.append(Int(netscore(totalscore: plyr5totalfront, handi: players.Player5H, net:nplyr5totalfront, playerArray:plyr5scorefirst))!)
-//                    winnermessage = winnerCheck(playerScoreArray: netScoreArray, winnerscore: winnerscore, PlayerArray: playerArray)
                     wMOpaccity = 1
                     print(netScoreArray)
 
-                    winnermessage = "the winner had a score of \(netScoreArray.min()!), the player who won "
+                    winnermessage = String(netScoreArray.min()!)
+                    indexOfWinner = netScoreArray.firstIndex(of: Int(winnermessage)!)!
+                    playerwinnermessage = String(describing: playerArray[indexOfWinner])
+
                     print(netScoreArray)
                 }
-                Text(winnermessage)
+                .buttonStyle(GrowingButton())
+                
+                Text("The player who won is \(playerwinnermessage), with a score of \(winnermessage)")
                     .opacity(wMOpaccity)
+                    .bold()
+                    .fontWeight(.heavy)
             }
         }
     }
-//    func winnerCheck(playerScoreArray: Array<Int>, winnerscore: Int, PlayerArray: Array<String>) -> String {
-//        var winnerscore = playerScoreArray.min()
-//        var indexofwinner = playerScoreArray.firstIndex(where: winnerscore)
-//        var winner = PlayerArray[indexofwinner]
-////        var winnerscore = playerScoreArray[0] as! Int
-//
-////        for number in 0..<5 {
-////            if winnerscore >= playerScoreArray[number] as! Int {
-////                winnerscore = playerScoreArray[number] as! Int
-////                winner = PlayerArray[number]
-////            }
-////        }
-//        return "\(winner) is the winner"
-//    }
-    
-//    func scoremessage(total1: Int, total2: Int, total3: Int, total4: Int, total5: Int, ) {
-//
-//    }
+
     func grossscoretotal(totalscore: Int, playerArray: Array<Any>) -> String {
         var totalscore = totalscore
         for number in 0..<9 {
@@ -203,13 +197,14 @@ struct playerScoreCard_Previews: PreviewProvider {
     }
 }
 
-let columns = [
-    
-        GridItem(.adaptive(minimum: 250)),
-    ]
-                          
-let rows = [
-    
-    GridItem(.fixed(25))
-    
-]
+struct GrowingButton: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .padding()
+            .background(.blue)
+            .foregroundColor(.white)
+            .clipShape(Capsule())
+            .scaleEffect(configuration.isPressed ? 1.2 : 1)
+            .animation(.easeOut(duration: 0.2), value: configuration.isPressed)
+    }
+}

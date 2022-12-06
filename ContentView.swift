@@ -38,16 +38,23 @@ struct ContentView: View {
         NavigationView {
             
             VStack{
-                HStack{
-                    Text("Players")
-                    Spacer()
-                    Text("Handicap numbers")
-                }
+                Text("Golf Score Card")
+                    .font(Font.custom("Marker Felt", size: 36))
+                    .padding()
+    
                 HStack{
                     Spacer()
                     Text("1")
-                    CustomTextFieldPlayer(placeholder: "Player 1", variable: $players.Player1)
-                    CustomTextFieldHandi(placeholder: "#1", variable: $players.Player1H)
+                        .offset(x: 0, y: 15)
+                    VStack{
+                        Text("Players")
+                            .bold()
+                        CustomTextFieldPlayer(placeholder: "Player 1", variable: $players.Player1)
+                    }
+                    VStack{
+                        Text("#")
+                        CustomTextFieldHandi(placeholder: "#1", variable: $players.Player1H)
+                    }
                     Spacer()
                 }
                 HStack{
@@ -83,6 +90,7 @@ struct ContentView: View {
                 }
                 VStack{
                     NavigationLink(destination: playerScoreCard(players: players, playerArray: playerArray, handicapArray: handicapArray),  isActive: $isShowingDetailView) { EmptyView()}
+                        .padding()
                     Button("Add Players") {
                         isShowingDetailView = true
                         playerArray.append(players.Player1)
@@ -96,6 +104,7 @@ struct ContentView: View {
                         handicapArray.append(players.Player4H)
                         handicapArray.append(players.Player5H)
                     }
+                    .buttonStyle(GrowingButton())
                 }
             }
         }
@@ -129,3 +138,5 @@ struct CustomTextFieldHandi: View {
             .frame(width: 25, height: 25)
     }
 }
+
+
