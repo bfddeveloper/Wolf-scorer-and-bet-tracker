@@ -61,8 +61,6 @@ struct playerScoreCard: View {
                                 .bold()
                         }
                     }
-                    
-                    
                     HStack{
                         CustomTextWithSub(player: players.Player2, handi: players.Player2H)
                         HStack{
@@ -157,7 +155,6 @@ struct playerScoreCard: View {
             }
         }
     }
-
     func grossscoretotal(totalscore: Int, playerArray: Array<Any>) -> String {
         var totalscore = totalscore
         for number in 0..<9 {
@@ -175,6 +172,7 @@ struct playerScoreCard: View {
         return String(net)
     }
 }
+
 struct CustomTextWithSub: View {
     let player : String
     let handi : String

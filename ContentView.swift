@@ -7,27 +7,6 @@
 
 import SwiftUI
 
-struct Players {
-    var Player1 = ""
-    var Player2 = ""
-    var Player3 = ""
-    var Player4 = ""
-    var Player5 = ""
-    
-    var Player1H = ""
-    var Player2H = ""
-    var Player3H = ""
-    var Player4H = ""
-    var Player5H = ""
-    
-   
-
-}
-
-
-
-
-
 struct ContentView: View {
     @State private var players = Players()
     @State private var playerArray = [String]()
@@ -38,7 +17,7 @@ struct ContentView: View {
         NavigationView {
             
             VStack{
-                Text("Golf Score Card")
+                Text("A Simple Golf Score Card")
                     .font(Font.custom("Marker Felt", size: 36))
                     .padding()
     
@@ -138,5 +117,20 @@ struct CustomTextFieldHandi: View {
             .frame(width: 25, height: 25)
     }
 }
+
+struct Players {
+    var Player1 = ""
+    var Player2 = ""
+    var Player3 = ""
+    var Player4 = ""
+    var Player5 = ""
+    
+    var Player1H = ""
+    var Player2H = ""
+    var Player3H = ""
+    var Player4H = ""
+    var Player5H = ""
+}
+
 
 
